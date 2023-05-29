@@ -32,7 +32,7 @@ int print_pointer(va_list genres, char buf[],
 
 	while (num_add > 0)
 	{
-		buff[index--] = maptou[num_add % 16];
+		buf[index--] = maptou[num_add % 16];
 		num_add /= 16;
 		len++;
 	}
@@ -79,14 +79,14 @@ int print_non_printable(va_list genres, char buf[],
 		if (is_printb(strg[j]))
 			buf[j + cardib] = strg[j];
 		else
-			cardi += append_hexa_code(strg[j], buff, j + cardib);
+			cardib += append_hexa_code(strg[j], buf, j + cardib);
 
 		j++;
 	}
 
 	buf[j + cardib] = '\0';
 
-	return (write(1, buf, i + cardib));
+	return (write(1, buf, j + cardib));
 }
 
 /**
