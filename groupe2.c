@@ -16,7 +16,7 @@ int print_unsigned(va_list genres, char buf[],
 	int j = BUFF_SIZE - 2;
 	unsigned long int NUM = va_arg(genres, unsigned long int);
 
-	NUM = convert_s_unsigne int(num, size);
+	NUM = convert_s_unsigned(NUM, size);
 
 	if (NUM == 0)
 		buf[j--] = '0';
@@ -54,7 +54,7 @@ int print_octal(va_list genres, char buf[],
 
 	UNUSED(width);
 
-	NUM = convert_s_unsigned int(NUM, size);
+	NUM = convert_s_unsigned(NUM, size);
 
 	if (NUM == 0)
 		buf[j--] = '0';
@@ -72,7 +72,7 @@ int print_octal(va_list genres, char buf[],
 
 	j++;
 
-	return (writing_uns_num(0, i, buffer, flags, width, precision, size));
+	return (writing_uns_num(0, j, buf, flags, width, precision, size));
 }
 
 /**
@@ -130,7 +130,7 @@ int print_hexa(va_list genres, char maptou[], char buf[],
 
 	UNUSED(width);
 
-	NUM = convert_size_unsgnd(NUM, size);
+	NUM = convert_s_unsigned(NUM, size);
 
 	if (NUM == 0)
 		buf[j--] = '0';
