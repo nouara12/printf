@@ -1,7 +1,5 @@
 #include "main.h"
 
-/************************* PRINT CHAR *************************/
-
 /**
  * print_char - Used to print a char
  * @genres: types of char
@@ -13,7 +11,7 @@
  * Return: chars printed
  */
 int print_char(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	char ch = va_arg(genres, int);
 
@@ -31,29 +29,26 @@ int print_char(va_list genres, char buf[],
  * Return: chars printed
  */
 int print_string(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	int len = 0, j;
 	char *strg = va_arg(genres, char *);
 
-	UNUSED(buf);
-	UNUSED(flags);
-	UNUSED(width);
-	UNUSED(precision);
-	UNUSED(size);
+		UNUSED(buf);
+		UNUSED(flags);
+		UNUSED(width);
+		UNUSED(precision);
+		UNUSED(size);
 	if (strg == NULL)
 	{
-		strf = "(null)";
+		strg = "(null)";
 		if (precision >= 6)
 			strg = "      ";
 	}
-
 	while (strg[len] != '\0')
 		len++;
-
 	if (precision >= 0 && precision < len)
 		len = precision;
-
 	if (width > len)
 	{
 		if (flags & F_MINUS)
@@ -71,7 +66,6 @@ int print_string(va_list genres, char buf[],
 			return (width);
 		}
 	}
-
 	return (write(1, strg, len));
 }
 
@@ -86,10 +80,10 @@ int print_string(va_list genres, char buf[],
  * Return: Number of chars printed
  */
 int print_percent(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	UNUSED(genres);
-	UNUSED(buffer);
+	UNUSED(buf);
 	UNUSED(flags);
 	UNUSED(width);
 	UNUSED(precision);
@@ -97,7 +91,6 @@ int print_percent(va_list genres, char buf[],
 	return (write(1, "%%", 1));
 }
 
-/************************* PRINT INT *************************/
 /**
  * print_int - Print int
  * @genres: types of char
@@ -109,39 +102,32 @@ int print_percent(va_list genres, char buf[],
  * Return: Number of chars printed
  */
 int print_int(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	int j = BUFF_SIZE - 2;
 	int negatif = 0;
 	long int N = va_arg(genres, long int);
 	unsigned long int NUM;
 
-	nN = convert_s_num(n, size);
-
+	N = convert_s_num(N, size);
 	if (N == 0)
 		buf[j--] = '0';
-
 	buf[BUFF_SIZE - 1] = '\0';
 	NUM = (unsigned long int)N;
-
 	if (N < 0)
 	{
 		NUM = (unsigned long int)((-1) * N);
 		negatif = 1;
 	}
-
 	while (NUM > 0)
 	{
 		buf[j--] = (NUM % 10) + '0';
 		NUM /= 10;
 	}
-
-	ij++;
-
+	j++;
 	return (writing_numbers(negatif, j, buf, flags, width, precision, size));
 }
 
-/************************* PRINT BINARY *************************/
 /**
  * print_binary - print binary
  * @genres: types of char
@@ -153,7 +139,7 @@ int print_int(va_list genres, char buf[],
  * Return: Number of chars printed
  */
 int print_binary(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	unsigned int a, b, j, SUM;
 	unsigned int A[32];
