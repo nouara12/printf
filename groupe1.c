@@ -11,7 +11,7 @@
  * Return: chars printed
  */
 int print_char(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	char ch = va_arg(genres, int);
 
@@ -29,29 +29,26 @@ int print_char(va_list genres, char buf[],
  * Return: chars printed
  */
 int print_string(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	int len = 0, j;
 	char *strg = va_arg(genres, char *);
 
-	UNUSED(buf);
-	UNUSED(flags);
-	UNUSED(width);
-	UNUSED(precision);
-	UNUSED(size);
+		UNUSED(buf);
+		UNUSED(flags);
+		UNUSED(width);
+		UNUSED(precision);
+		UNUSED(size);
 	if (strg == NULL)
 	{
 		strg = "(null)";
 		if (precision >= 6)
 			strg = "      ";
 	}
-
 	while (strg[len] != '\0')
 		len++;
-
 	if (precision >= 0 && precision < len)
 		len = precision;
-
 	if (width > len)
 	{
 		if (flags & F_MINUS)
@@ -69,7 +66,6 @@ int print_string(va_list genres, char buf[],
 			return (width);
 		}
 	}
-
 	return (write(1, strg, len));
 }
 
@@ -84,7 +80,7 @@ int print_string(va_list genres, char buf[],
  * Return: Number of chars printed
  */
 int print_percent(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	UNUSED(genres);
 	UNUSED(buf);
@@ -106,7 +102,7 @@ int print_percent(va_list genres, char buf[],
  * Return: Number of chars printed
  */
 int print_int(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	int j = BUFF_SIZE - 2;
 	int negatif = 0;
@@ -114,27 +110,31 @@ int print_int(va_list genres, char buf[],
 	unsigned long int NUM;
 
 	N = convert_s_num(N, size);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6cb7c05bb55a9df2a1e295d2b2fe1ca3415db855
 	if (N == 0)
 		buf[j--] = '0';
-
 	buf[BUFF_SIZE - 1] = '\0';
 	NUM = (unsigned long int)N;
-
 	if (N < 0)
 	{
 		NUM = (unsigned long int)((-1) * N);
 		negatif = 1;
 	}
-
 	while (NUM > 0)
 	{
 		buf[j--] = (NUM % 10) + '0';
 		NUM /= 10;
 	}
+<<<<<<< HEAD
 
 	j++;
 
+=======
+	j++;
+>>>>>>> 6cb7c05bb55a9df2a1e295d2b2fe1ca3415db855
 	return (writing_numbers(negatif, j, buf, flags, width, precision, size));
 }
 
@@ -149,7 +149,7 @@ int print_int(va_list genres, char buf[],
  * Return: Number of chars printed
  */
 int print_binary(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	unsigned int a, b, j, SUM;
 	unsigned int A[32];

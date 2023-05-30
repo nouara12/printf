@@ -11,7 +11,7 @@
  * Return: Number of chars printed
  */
 int print_unsigned(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	int j = BUFF_SIZE - 2;
 	unsigned long int NUM = va_arg(genres, unsigned long int);
@@ -20,7 +20,6 @@ int print_unsigned(va_list genres, char buf[],
 
 	if (NUM == 0)
 		buf[j--] = '0';
-
 	buf[BUFF_SIZE - 1] = '\0';
 
 	while (NUM > 0)
@@ -28,9 +27,7 @@ int print_unsigned(va_list genres, char buf[],
 		buf[j--] = (NUM % 10) + '0';
 		NUM /= 10;
 	}
-
 	j++;
-
 	return (writing_uns_num(0, j, buf, flags, width, precision, size));
 }
 
@@ -45,9 +42,8 @@ int print_unsigned(va_list genres, char buf[],
  * Return: Number of chars printed
  */
 int print_octal(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
-
 	int j = BUFF_SIZE - 2;
 	unsigned long int NUM = va_arg(genres, unsigned long int);
 	unsigned long int initi_num = NUM;
@@ -58,7 +54,6 @@ int print_octal(va_list genres, char buf[],
 
 	if (NUM == 0)
 		buf[j--] = '0';
-
 	buf[BUFF_SIZE - 1] = '\0';
 
 	while (NUM > 0)
@@ -66,12 +61,13 @@ int print_octal(va_list genres, char buf[],
 		buf[j--] = (NUM % 8) + '0';
 		NUM /= 8;
 	}
-
 	if (flags & F_HASH && initi_num != 0)
 		buf[j--] = '0';
-
 	j++;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6cb7c05bb55a9df2a1e295d2b2fe1ca3415db855
 	return (writing_uns_num(0, j, buf, flags, width, precision, size));
 }
 
@@ -86,10 +82,10 @@ int print_octal(va_list genres, char buf[],
  * Return: Number of chars printed
  */
 int print_hexadecimal(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		 int flags, int width, int precision, int size)
 {
 	return (print_hexa(genres, "0123456789abcdef", buf,
-		flags, 'x', width, precision, size));
+				flags, 'x', width, precision, size));
 }
 
 /**
@@ -103,10 +99,10 @@ int print_hexadecimal(va_list genres, char buf[],
  * Return: Number of chars printed
  */
 int print_hexa_upper(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		 int flags, int width, int precision, int size)
 {
 	return (print_hexa(genres, "0123456789ABCDEF", buf,
-		flags, 'X', width, precision, size));
+				flags, 'X', width, precision, size));
 }
 
 /**
@@ -122,7 +118,7 @@ int print_hexa_upper(va_list genres, char buf[],
  * Return: Number of chars printed
  */
 int print_hexa(va_list genres, char maptou[], char buf[],
-	int flags, char flagch, int width, int precision, int size)
+		 int flags, char flagch, int width, int precision, int size)
 {
 	int j = BUFF_SIZE - 2;
 	unsigned long int NUM = va_arg(genres, unsigned long int);
@@ -148,8 +144,6 @@ int print_hexa(va_list genres, char maptou[], char buf[],
 		buf[j--] = flagch;
 		buf[j--] = '0';
 	}
-
 	j++;
-
 	return (writing_uns_num(0, j, buf, flags, width, precision, size));
 }

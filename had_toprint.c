@@ -12,7 +12,7 @@
  * Return: either 1 or 2;
  */
 int had_toprint(const char *f_printf, int *index, va_list ap, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	int j, unk = 0, prted_ch = -1;
 	ptf ptf_types[] = {
