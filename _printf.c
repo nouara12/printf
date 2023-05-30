@@ -38,17 +38,18 @@ int _printf(const char *format, ...)
 			size = catch_size(format, &j);
 			++j;
 			prted = had_toprint(format, &j, ap, buf,
+<<<<<<< HEAD
 				flags, width, precision, size);
+=======
+					flags, width, precision, size);
+>>>>>>> e976ed371b195c1f62c6216b0e3d0e244d0e8d79
 			if (prted == -1)
 				return (-1);
 			prted_ch += prted;
 		}
 	}
-
 	p_buf(buf, &buf_index);
-
 	va_end(ap);
-
 	return (prted_ch);
 }
 
@@ -61,6 +62,5 @@ void p_buf(char buf[], int *buf_index)
 {
 	if (*buf_index > 0)
 		write(1, &buf[0], *buf_index);
-
 	*buf_index = 0;
 }

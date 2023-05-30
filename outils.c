@@ -10,7 +10,6 @@ int is_printb(char ch)
 {
 	if (ch >= 32 && ch < 127)
 		return (1);
-
 	return (0);
 }
 
@@ -47,7 +46,6 @@ int is_digit(char ch)
 {
 	if (ch >= '0' && ch <= '9')
 		return (1);
-
 	return (0);
 }
 
@@ -64,7 +62,6 @@ long int convert_s_num(long int NUM, int size)
 		return (NUM);
 	else if (size == S_SHORT)
 		return ((short)NUM);
-
 	return ((int)NUM);
 }
 
@@ -81,6 +78,5 @@ long int convert_s_unsigned(unsigned long int NUM, int size)
 		return (NUM);
 	else if (size == S_SHORT)
 		return ((unsigned short)NUM);
-
 	return ((unsigned int)NUM);
 }

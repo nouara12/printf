@@ -12,7 +12,11 @@
  * Return: the output of main file.
  */
 int writing_chars(char ch, char buf[],
+<<<<<<< HEAD
 	int flags, int width, int precision, int size)
+=======
+		 int flags, int width, int precision, int size)
+>>>>>>> e976ed371b195c1f62c6216b0e3d0e244d0e8d79
 {
 	int j = 0;
 	char padding = ' ';
@@ -57,7 +61,11 @@ int writing_chars(char ch, char buf[],
  * Return: Number of chars printed.
  */
 int writing_numbers(int negatif, int index, char buf[],
+<<<<<<< HEAD
 	int flags, int width, int precision, int size)
+=======
+		int flags, int width, int precision, int size)
+>>>>>>> e976ed371b195c1f62c6216b0e3d0e244d0e8d79
 {
 	int len = BUFF_SIZE - index - 1;
 	char padding = ' ', ext = 0;
@@ -74,7 +82,11 @@ int writing_numbers(int negatif, int index, char buf[],
 		ext = ' ';
 
 	return (print_num(index, buf, flags, width, precision,
+<<<<<<< HEAD
 		len, padding, ext));
+=======
+				len, padding, ext));
+>>>>>>> e976ed371b195c1f62c6216b0e3d0e244d0e8d79
 }
 
 /**
@@ -91,12 +103,22 @@ int writing_numbers(int negatif, int index, char buf[],
  * Return: chars printed.
  */
 int print_num(int index, char buf[],
+<<<<<<< HEAD
 	int flags, int width, int precision,
 	int len, char padding, char ext)
 {
 	int j, start_pad = 1;
 
 	if (precision == 0 && index == BUFF_SIZE - 2 && buf[index] == '0' && width == 0)
+=======
+		int flags, int width, int precision,
+		int len, char padding, char ext)
+{
+	int j, start_pad = 1;
+
+	if (precision == 0 && index == BUFF_SIZE - 2 &&
+			buf[index] == '0' && width == 0)
+>>>>>>> e976ed371b195c1f62c6216b0e3d0e244d0e8d79
 		return (0);
 	if (precision == 0 && index == BUFF_SIZE - 2 && buf[index] == '0')
 		buf[index] = padding = ' ';
@@ -128,7 +150,11 @@ int print_num(int index, char buf[],
 			if (ext)
 				buf[--start_pad] = ext;
 			return (write(1, &buf[start_pad], j - start_pad) +
+<<<<<<< HEAD
 				write(1, &buf[index], len - (1 - start_pad)));
+=======
+					write(1, &buf[index], len - (1 - start_pad)));
+>>>>>>> e976ed371b195c1f62c6216b0e3d0e244d0e8d79
 		}
 	}
 	if (ext)
@@ -149,7 +175,7 @@ int print_num(int index, char buf[],
  * Return: the chars written.
  */
 int writing_uns_num(int negatif, int index,
-	char buf[], int flags, int width, int precision, int size)
+		char buf[], int flags, int width, int precision, int size)
 {
 	int len = BUFF_SIZE - index - 1, j = 0;
 	char padding = ' ';
@@ -188,7 +214,10 @@ int writing_uns_num(int negatif, int index,
 			return (write(1, &buf[0], j) + write(1, &buf[index], len));
 		}
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> e976ed371b195c1f62c6216b0e3d0e244d0e8d79
 	return (write(1, &buf[index], len));
 }
 
@@ -206,7 +235,7 @@ int writing_uns_num(int negatif, int index,
  * Return: Char written.
  */
 int writing_pointers(char buf[], int index, int len,
-	int width, int flags, char padding, char ext, int start_pad)
+		 int width, int flags, char padding, char ext, int start_pad)
 {
 	int j;
 
@@ -238,7 +267,11 @@ int writing_pointers(char buf[], int index, int len,
 			buf[1] = '0';
 			buf[2] = 'x';
 			return (write(1, &buf[start_pad], j - start_pad) +
+<<<<<<< HEAD
 				write(1, &buf[index], len - (1 - start_pad) - 2));
+=======
+					write(1, &buf[index], len - (1 - start_pad) - 2));
+>>>>>>> e976ed371b195c1f62c6216b0e3d0e244d0e8d79
 		}
 	}
 	buf[--index] = 'x';
