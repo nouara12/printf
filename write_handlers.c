@@ -56,7 +56,7 @@ int writing_chars(char ch, char buf[],
  *
  * Return: Number of chars printed.
  */
-int write_numbers(int negatif, int index, char buf[],
+int writing_numbers(int negatif, int index, char buf[],
 	int flags, int width, int precision, int size)
 {
 	int len = BUFF_SIZE - index - 1;

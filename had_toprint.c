@@ -22,28 +22,29 @@ int had_toprint(const char *f_printf, int *index, va_list ap, char buf[],
 		{'X', print_hexa_upper}, {'p', print_pointer}, {'S', print_non_printable},
 		{'r', print_reverse}, {'R', print_rot13string}, {'\0', NULL}
 	};
-	for (j = 0; ptf_types[j].ptf != '\0'; j++)
-		if (ptf[*index] == ptf_types[j].ptf)
-			return (ptf_types[i].fn(ap, buf, flags, width, precision, size));
+	for (j = 0; ptf_types[j].f_printf != '\0'; j++)
+		if (f_printf[*index] == ptf_types[j].f_printf)
+			return (ptf_types[j].func(ap, buf, flags, width, precision, size));
 
-	if (ptf_types[i].ptf == '\0')
+	if (ptf_types[j].f_printf == '\0')
 	{
-		if (ptf[*index] == '\0')
+		if (f_printf[*index] == '\0')
 			return (-1);
 		unk += write(1, "%%", 1);
-		if (ptf[*index - 1] == ' ')
+		if (f_printf[*index - 1] == ' ')
 			unk += write(1, " ", 1);
 		else if (width)
 		{
 			--(*index);
-			while (ptf[*index] != ' ' && ptf[*index] != '%')
+			while (f_printf[*index] != ' ' && f_printf[*index] != '%')
 				--(*index);
-			if (ptf[*index] == ' ')
+			if (f_printf[*index] == ' ')
 				--(*index);
 			return (1);
 		}
-		unk += write(1, &ptf[*index], 1);
+		unk += write(1, &f_printf[*index], 1);
 		return (unk);
 	}
 	return (prted_ch);
 }
+

@@ -1,7 +1,5 @@
 #include "main.h"
 
-/************************* PRINT CHAR *************************/
-
 /**
  * print_char - Used to print a char
  * @genres: types of char
@@ -43,7 +41,7 @@ int print_string(va_list genres, char buf[],
 	UNUSED(size);
 	if (strg == NULL)
 	{
-		strf = "(null)";
+		strg = "(null)";
 		if (precision >= 6)
 			strg = "      ";
 	}
@@ -89,7 +87,7 @@ int print_percent(va_list genres, char buf[],
 	int flags, int width, int precision, int size)
 {
 	UNUSED(genres);
-	UNUSED(buffer);
+	UNUSED(buf);
 	UNUSED(flags);
 	UNUSED(width);
 	UNUSED(precision);
@@ -97,7 +95,6 @@ int print_percent(va_list genres, char buf[],
 	return (write(1, "%%", 1));
 }
 
-/************************* PRINT INT *************************/
 /**
  * print_int - Print int
  * @genres: types of char
@@ -116,7 +113,7 @@ int print_int(va_list genres, char buf[],
 	long int N = va_arg(genres, long int);
 	unsigned long int NUM;
 
-	nN = convert_s_num(n, size);
+	N = convert_s_num(N, size);
 
 	if (N == 0)
 		buf[j--] = '0';
@@ -136,12 +133,11 @@ int print_int(va_list genres, char buf[],
 		NUM /= 10;
 	}
 
-	ij++;
+	j++;
 
 	return (writing_numbers(negatif, j, buf, flags, width, precision, size));
 }
 
-/************************* PRINT BINARY *************************/
 /**
  * print_binary - print binary
  * @genres: types of char

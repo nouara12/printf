@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * is_printable - Used pour evaluer les char
+ * is_printb - Used pour evaluer les char
  * @ch: en evaluation
  *
  * Return: 1 ou 0
  */
-int is_printable(char ch)
+int is_printb(char ch)
 {
 	if (ch >= 32 && ch < 127)
 		return (1);
@@ -32,7 +32,7 @@ int append_hexa_code(char ascii, char buf[], int j)
 	buf[j++] = 'x';
 
 	buf[j++] = maptou[ascii / 16];
-	buffer[j++] = maptou[ascii % 16];
+	buf[j++] = maptou[ascii % 16];
 
 	return (3);
 }
