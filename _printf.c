@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 		if (format[j] != '%')
 		{
 			buf[buf_index++] = format[j];
-			if (buff_index == BUFF_SIZE)
+			if (buf_index == BUFF_SIZE)
 				p_buf(buf, &buf_index);
 			/* write(1, &format[i], 1);*/
 			prted_ch++;
@@ -32,23 +32,20 @@ int _printf(const char *format, ...)
 		else
 		{
 			p_buf(buf, &buf_index);
-			flags = get_flags(format, &j);
-			width = get_width(format, &j, ap);
-			precision = get_precision(format, &j, ap);
-			size = get_size(format, &j);
+			flags = catch_flags(format, &j);
+			width = catch_width(format, &j, ap);
+			precision = catch_precision(format, &j, ap);
+			size = catch_size(format, &j);
 			++j;
-			prted = handle_print(format, &j, ap, buf,
-				flags, width, precision, size);
+			prted = had_toprint(format, &j, ap, buf,
+					flags, width, precision, size);
 			if (prted == -1)
 				return (-1);
 			prted_ch += prted;
 		}
 	}
-
 	p_buf(buf, &buf_index);
-
 	va_end(ap);
-
 	return (prted_ch);
 }
 
@@ -61,6 +58,5 @@ void p_buf(char buf[], int *buf_index)
 {
 	if (*buf_index > 0)
 		write(1, &buf[0], *buf_index);
-
 	*buf_index = 0;
 }
