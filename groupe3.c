@@ -11,7 +11,7 @@
  * Return: chars printed
  */
 int print_pointer(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	char ext = 0, padding = ' ';
 	int index = BUFF_SIZE - 2, len = 2, start_pad = 1;
@@ -32,7 +32,7 @@ int print_pointer(va_list genres, char buf[],
 
 	while (num_add > 0)
 	{
-		buff[index--] = maptou[num_add % 16];
+		buf[index--] = maptou[num_add % 16];
 		num_add /= 16;
 		len++;
 	}
@@ -43,11 +43,9 @@ int print_pointer(va_list genres, char buf[],
 		ext = '+', len++;
 	else if (flags & F_SPACE)
 		ext = ' ', len++;
-
 	index++;
-
 	return (writing_pointers(buf, index, len,
-		width, flags, padding, ext, start_pad));
+				width, flags, padding, ext, start_pad));
 }
 
 /**
@@ -61,7 +59,7 @@ int print_pointer(va_list genres, char buf[],
  * Return: Number of chars printed
  */
 int print_non_printable(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	int j = 0, cardib = 0;
 	char *strg = va_arg(genres, char *);
@@ -79,14 +77,11 @@ int print_non_printable(va_list genres, char buf[],
 		if (is_printb(strg[j]))
 			buf[j + cardib] = strg[j];
 		else
-			cardi += append_hexa_code(strg[j], buff, j + cardib);
-
+			cardib += append_hexa_code(strg[j], buf, j + cardib);
 		j++;
 	}
-
 	buf[j + cardib] = '\0';
-
-	return (write(1, buf, i + cardib));
+	return (write(1, buf, j + cardib));
 }
 
 /**
@@ -99,9 +94,8 @@ int print_non_printable(va_list genres, char buf[],
  * @size: specification of size
  * Return: Numbers of chars printed
  */
-
 int print_reverse(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		 int flags, int width, int precision, int size)
 {
 	char *strg;
 	int j, compt = 0;
@@ -116,12 +110,10 @@ int print_reverse(va_list genres, char buf[],
 	if (strg == NULL)
 	{
 		UNUSED(precision);
-
 		strg = ")Null(";
 	}
 	for (j = 0; strg[j]; j++)
 		;
-
 	for (j = j - 1; j >= 0; j--)
 	{
 		char m = strg[j];
@@ -143,7 +135,7 @@ int print_reverse(va_list genres, char buf[],
  * Return: Numbers of chars printed
  */
 int print_rot13string(va_list genres, char buf[],
-	int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
 	char x;
 	char *strg;
